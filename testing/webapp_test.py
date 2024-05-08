@@ -1,8 +1,8 @@
-from bottle import request, route, run
+from bottle import request, route, run, static_file, template
 
 @route('/')
 def index():
-    return 'Hello World!!!!!!'
+    return return template("startseite_html.html", title="Startseite")
 
 @route("/about")
 def about():
