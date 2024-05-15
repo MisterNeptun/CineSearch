@@ -33,23 +33,20 @@ body {
     color: white;
 }
 
-.searchbar {
+.searchbar form {
     display: flex;
     justify-content: center;
-    
+    padding-top: 8px;
 }
 
 .searchbar input[type=text] {
     padding: 6px;
     border: 2px solid gray;
-    margin-top: 8px;
-    margin-right: 16px;
     font-size: 17px;
 }
 
 .searchbar button {
     padding: 6px 10px;
-    margin-top: 8px;
     background: #ddd;
     font-size: 17px;
     border: none;
