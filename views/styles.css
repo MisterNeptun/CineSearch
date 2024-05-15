@@ -10,25 +10,39 @@ html {
 
 body {
     color: black;
+    font-family: "Jaro", sans-serif;
+    font-weight: 400;
 }
 
 .navbar {
     width: auto;
-    height: 3vw;
+    height: 6vw;
     background-color: gray;
+    margin-bottom: 1vw;
 }
 
 .nav-logo {
     display: flex;
     justify-content: center;
-    margin: 0 10px 10px 10px;
+    padding: 1vw 0 1vw 0;
+    font-size: 3vw;
 }
 
-.nav-logo > p {
-  font-family: "Jaro", sans-serif;
-  font-weight: 400;
-}
-
-.nav-logo > a {
+.nav-logo a {
     text-decoration: none;
+    color: white;
+}
+
+.searchbar {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.searchbar input[type=text] {
+  padding: 6px;
+  border: dashed;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
 }
