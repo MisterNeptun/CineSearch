@@ -22,6 +22,20 @@ def about():
 @route("/serie/<id>")
 def film(id):
     return "Du hast Details zur Serie mit der id " + id + " verlangt"
+@route('/movie')
+def movie():
+
+    mydb = connect()
+    mycursor = mydb.cursor(named_tuple=True)    
+    mycursor.execute("SELECT * FROM movies WHERE name LIKE '%Titanic%'")
+
+    myresult = mycursor.fetchone()
+    
+    mydb.close()
+    print(myresult)
+    return template("movie.html", movie=myresult)
+    
+
 
 @route("/search")
 def search():
