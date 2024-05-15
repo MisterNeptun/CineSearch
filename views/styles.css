@@ -1,0 +1,34 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    color: black;
+}
+
+.navbar {
+    width: auto;
+    height: 3vw;
+    background-color: gray;
+}
+
+.nav-logo {
+    display: flex;
+    justify-content: center;
+    margin: 0 10px 10px 10px;
+}
+
+.nav-logo > p {
+  font-family: "Jaro", sans-serif;
+  font-weight: 400;
+}
+
+.nav-logo > a {
+    text-decoration: none;
+}
