@@ -1,4 +1,14 @@
 from bottle import request, route, run, static_file, template
+import mysql.connector
+
+def connect():
+    mydb = mysql.connector.connect(
+      host="web3.kinet.ch",    
+      user="omdb_user",
+      database="omdb",
+      password="QhPSNctsBRgsYOKEbASI"
+    )
+    return mydb
 
 @route('/')
 def index():
