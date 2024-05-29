@@ -1,12 +1,32 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        
         <title>{{movie.name}}</title>
+        <link rel="stylesheet" href="../static/styles.css">
+        
+        <!-- Google Fonts import -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+        
+        <!-- Search Icon import -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <meta name="viewport" content="width=device-width initial-scale:1.0"/>
+        <meta charset="utf-8"/>
     </head>
     <body>
         <h1>{{movie.name}}</h1>
         <ul>Relase: {{movie.date}}</ul>
         <ul>Runtime: {{movie.runtime}}</ul>
         <ul>Budget: {{movie.budget}}</ul>
+        <ul>Revenue: {{movie.revenue}}</ul>
+        <ul>Kind: {{movie.kind}}</ul>
+        <ul>Language: {{movie.language}}</ul>
+        
+        
+        
         
 
     </body>
