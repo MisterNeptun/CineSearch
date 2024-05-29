@@ -43,8 +43,17 @@ def movie():
 @route("/search")
 def search():
     query = request.query.decode()
-    return "Du willst nach " + query.q + " suchen?"
-
+    mydb = connectDB()
+    mycursor = mydb.cursor(named_tuple=True)
+    print(str("SELECT * FROM movies WHERE name LIKE '%")+query.q+str("%'"))
+    mycursor.execute(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%'"))
+    
+    myresult = mycursor.fetchone()
+    
+    mydb.close()
+    
+    print(myresult)
+    return template("movie.html", movie=myresult)
 @error(404)
 def error404(error):
     return 'DU HSOHN HAST NACH FALSCHEN SACHEN GESUCHT'
