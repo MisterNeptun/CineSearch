@@ -12,7 +12,7 @@ def connect():
 
 @route('/')
 def index():
-    return template("startseite.html", title="Startseite")
+    return template("../views/startseite.html", title="Startseite")
 
 @route("/about")
 def about():
