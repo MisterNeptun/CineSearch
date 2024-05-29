@@ -41,4 +41,8 @@ def search():
     query = request.query.decode()
     return "Du willst nach " + query.q + " suchen?"
 
+@route('/static/<filename>')
+def static(filename):
+    static_file(filename, root="./static")
+
 run(reloader=True, host='localhost', port=8080)
