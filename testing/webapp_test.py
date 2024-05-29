@@ -36,7 +36,7 @@ def movie():
 
     mydb = connectDB()
     mycursor = mydb.cursor(named_tuple=True)    
-    mycursor.execute("SELECT * FROM movies WHERE name LIKE id=ZAHL")
+    mycursor.execute("SELECT * FROM movies join trailers on movies.id=trailers.movie_id WHERE name LIKE "%Titanic%" ORDER BY movies.revenue DESC")
 
     myresult = mycursor.fetchone()
     
