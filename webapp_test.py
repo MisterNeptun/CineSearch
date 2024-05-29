@@ -49,4 +49,4 @@ def search():
 def error404(error):
     return 'DU HSOHN HAST NACH FALSCHEN SACHEN GESUCHT'
 
-run(reloader=True, host='localhost', port=8080)
+run(reloader=True, host='localhost', port=8000)
