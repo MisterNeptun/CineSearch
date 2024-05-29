@@ -19,8 +19,8 @@ def index():
 # Routing der about page
 @route("/about")
 def about():
-    page = "Wir haben diese App im EF-Informatik erstellt!"
-    return page
+   
+    return return template("about.html", title="About")
 
 @route('/movie')
 def movie():
