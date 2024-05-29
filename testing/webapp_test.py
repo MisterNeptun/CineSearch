@@ -14,22 +14,13 @@ def connectDB():
 # ERKLÄRUNG?
 @route('/')
 def index():
-    return template("../views/startseite.html", title="Startseite")
+    return template("../views/index.html", title="Startseite")
 
 # Routing der about page
 @route("/about")
 def about():
     page = "Wir haben diese App im EF-Informatik erstellt!"
     return page
-
-# ISt das nötig?
-"""
-# Rückgabe der Id-Webseite
-@route("/serie/<id>")
-def film(id):
-    return "Du hast Details zur Serie mit der id " + id + " verlangt"
-"""
-
 
 @route('/movie')
 def movie():
