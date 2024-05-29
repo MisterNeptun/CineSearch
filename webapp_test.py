@@ -3,7 +3,7 @@ from mysql.connector import connect
 
 # Funktion zur Erstellung von der DatenBank
 def connectDB():
-    mydb = mysql.connector.connect(
+    mydb = connect(
       host="web3.kinet.ch",    
       user="omdb_user",
       database="omdb",
