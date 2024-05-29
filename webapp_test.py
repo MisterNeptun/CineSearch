@@ -13,7 +13,7 @@ def connectDB():
 
 @route('/static/<filename>')
 def static(filename):
-    static_file(filename, root="../static")
+    return static_file(filename, root="static")
 
 # ERKLÄRUNG?
 @route('/')
@@ -24,7 +24,7 @@ def index():
 @route("/about")
 def about():
    
-    return return template("about.html", title="About")
+    return template("about.html", title="About")
 
 @route('/movie')
 def movie():
