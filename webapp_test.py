@@ -1,4 +1,4 @@
-from bottle import request, route, run, static_file, template
+from bottle import request, route, run, static_file, template, error
 from mysql.connector import connect
 
 # Funktion zur Erstellung von der DatenBank
@@ -10,6 +10,10 @@ def connectDB():
       password="QhPSNctsBRgsYOKEbASI"
     )
     return mydb
+
+@route('/static/<filename>')
+def static(filename):
+    static_file(filename, root="../static")
 
 # ERKLÄRUNG?
 @route('/')
@@ -41,8 +45,8 @@ def search():
     query = request.query.decode()
     return "Du willst nach " + query.q + " suchen?"
 
-@route('/static/<filename>')
-def static(filename):
-    static_file(filename, root="./static")
+@error(404)
+def error404(error):
+    return 'DU HSOHN HAST NACH FALSCHEN SACHEN GESUCHT'
 
 run(reloader=True, host='localhost', port=8080)
