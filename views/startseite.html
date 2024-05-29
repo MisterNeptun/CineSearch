@@ -20,21 +20,52 @@
         
         <!-- NAV HEADER -->
         <nav id="navbar" class="navbar">
+            
+            <button onclick="window.history.back()" class="link link-back">
+                <i class="fa fa-angle-left"></i>
+            </button>
+    
             <div class="nav-logo">
                 <p>
                     <a href="./startseite.html">CineSearch</a>
                 </p>
             </div>
+            
         </nav>
         
         <div class="searchbar">
-            <form action="">
+            
+            <form action="/search?q=">
                 <input type="text" placeholder="Film oder so.." name="search">
-                <button type="submit" >
+                <button type="submit">
                     <i class="fa fa-search"></i>
                 </button>
             </form>
+            
         </div>
+        
+        <!--
+
+        <h1 class="header-recommendations header">Our Recommendations:</h1>
+        
+        <div class="recommendations">
+            
+            <a class="movie-tile" href="" target="_blank">
+                <img class="movie-image" alt="" src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"/>
+                <p class="movie-tile-subtitle">Movie name</p>
+            </a>
+            
+            <a class="movie-tile" href="" target="_blank">
+                <img class="movie-image" alt="" src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"/>
+                <p class="movie-tile-subtitle">Movie name</p>
+            </a>
+            
+            <a class="movie-tile" href="" target="_blank">
+                <img class="movie-image" alt="" src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"/>
+                <p class="movie-tile-subtitle">Movie name</p>
+            </a>
+        </div>
+        -->
         
     </body>
 </html>
