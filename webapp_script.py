@@ -23,7 +23,7 @@ def index():
 # Routing der about page
 @route("/about")
 def about():
-    return template("about.html", title="About")
+    return template("../views/about.html", title="About")
 
 @route("/search")
 def search():
@@ -41,6 +41,7 @@ def search():
         return template("movie.html", movie=myresult)
     except:
         return template("fehler.html")
+
 @error(404)
 def error404(error):
     return 'DU HAST NACH FALSCHEN SACHEN GESUCHT'
