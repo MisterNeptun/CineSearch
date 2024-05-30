@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="/static/styles.css">
         
-        <title>{{movie.name}}</title>
-        <link rel="stylesheet" href="../static/styles.css">
         
         <!-- Google Fonts import -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,17 +11,39 @@
         
         <!-- Search Icon import -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
         <meta name="viewport" content="width=device-width initial-scale:1.0"/>
         <meta charset="utf-8"/>
+        
+        <title>{{movie.name}}</title>
+        
     </head>
     <body>
-        <h1>{{movie.name}}</h1>
-        <ul>Relase: {{movie.date}}</ul>
-        <ul>Runtime: {{movie.runtime}}</ul>
-        <ul>Budget: {{movie.budget}}</ul>
-        <ul>Revenue: {{movie.revenue}}</ul>
-        <ul>Kind: {{movie.kind}}</ul>
+        <nav id="navbar" class="navbar">
+            
+            <button onclick="window.history.back()" class="link link-back">
+                <i class="fa fa-angle-left"></i>
+            </button>
+    
+            <div class="nav-logo">
+                <p>
+                    <a href="./index.html">CineSearch</a>
+                </p>
+            </div>
+            <div class="nav-about">
+                <p>
+                    <a href="./about.html">About</a>
+                </p>
+            </div>
+            
+        </nav>
+    
+  
+        <h1 style="font-size: xx-large;text-align: center;">{{movie.name}}</h1>
+        <ul style="text-align: center;">Relase: {{movie.date}}</ul>
+        <ul style="text-align: center;">Runtime: {{movie.runtime}}</ul>
+        <ul style="text-align: center;">Budget: {{movie.budget}}</ul>
+        <ul style="text-align: center;">Revenue: {{movie.revenue}}</ul>
+        <ul style="text-align: center;">Kind: {{movie.kind}}</ul>
         
         
         
