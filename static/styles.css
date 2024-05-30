@@ -1,0 +1,117 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    color: black;
+    font-family: "Jaro", sans-serif;
+    font-weight: 400;
+}
+
+ul {
+    font-size: x-large;
+    text-align: center;
+}
+
+.navbar {
+    position: relative;
+    
+    width: auto;
+    height: 6vw;
+    background-color: gray;
+    
+    margin-bottom: 1vw;
+    padding: 0 30px 0 30px;
+}
+
+.navbar > button {
+    position: absolute;
+    margin-top: 2.1%;
+    
+    width: 20px;
+    height: 20px;
+    
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+
+.nav-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  
+    transform: translate(-50%,-50%);
+    
+    width: auto;
+    font-size: 3vw;
+    
+    margin: auto;
+    padding: 1vw 0 1vw 0;
+}
+
+.nav-logo a {
+    text-decoration: none;
+    color: white;
+}
+.nav-about {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3vw;
+}
+
+.nav-about a {
+    text-decoration: none;
+    color: white;
+}
+
+.searchbar form {
+    display: flex;
+    justify-content: center;
+    
+    padding-top: 8px;
+}
+
+.searchbar input[type=text] {
+    border: 2px solid gray;
+    font-size: 17px;
+    
+    padding: 6px;
+}
+
+.searchbar button {
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    
+    padding: 6px 10px;
+
+    cursor: pointer;
+}
+
+.header-recommendations {
+    display: flex;
+    justify-content: center;
+    
+    width: auto;
+    
+    padding: 10px 0 10px 0;
+}
+
+.recommendations {
+    display: grid;
+    justify-content: center;
+    
+    grid-template-columns: repeat(auto-fit, minmax(33%, 1fr));
+    
+    max-width: 100%;
+    grid-gap: 10px;
+}
