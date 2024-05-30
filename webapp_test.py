@@ -23,22 +23,7 @@ def index():
 # Routing der about page
 @route("/about")
 def about():
-   
     return template("about.html", title="About")
-
-@route('/movie')
-def movie():
-
-    mydb = connectDB()
-    mycursor = mydb.cursor(named_tuple=True)    
-    mycursor.execute("SELECT * FROM movies WHERE name LIKE '%Titanic%'")
-
-    myresult = mycursor.fetchone()
-    
-    mydb.close()
-    
-    print(myresult)
-    return template("movie.html", movie=myresult)
 
 @route("/search")
 def search():
