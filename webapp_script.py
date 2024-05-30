@@ -41,11 +41,15 @@ def search():
     try:
         return template("movie.html", movie=myresult)
     except:
-        return template("fehler.html")
+        return error404("404")
+
+@route("/serie/<id>")
+def film(id):
+    return "Du hast Details zur Serie mit der id " + id + " verlangt"
 
 # Sucht man eine Subpage, die es nicht gibt, gibt das einen Fehler.
 @error(404)
 def error404(error):
-    return "Ups, diese Seite ist nicht verfügbar."
+    return "Ups, das hat nicht geklappt. " + error
 
 run(reloader=True, host='localhost', port=8000)
