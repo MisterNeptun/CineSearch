@@ -15,7 +15,7 @@ def connectDB():
 def static(filename):
     return static_file(filename, root="static")
 
-# ERKLÄRUNG?
+# Wenn man den Link eingibt, kommt diese Seite
 @route('/')
 def index():
     return template("../views/index.html", title="Startseite")
@@ -25,12 +25,13 @@ def index():
 def about():
     return template("../views/about.html", title="About")
 
+# Ergebnis nach einer Suche
 @route("/search")
 def search():
     query = request.query.decode()
     mydb = connectDB()
     mycursor = mydb.cursor(named_tuple=True)
-    print(str("SELECT * FROM movies WHERE name LIKE '%")+query.q+str("%'"))
+    print(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%'"))
     mycursor.execute(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%'"))
     
     myresult = mycursor.fetchone()
@@ -42,8 +43,9 @@ def search():
     except:
         return template("fehler.html")
 
+# Sucht man eine Subpage, die es nicht gibt, gibt das einen Fehler.
 @error(404)
 def error404(error):
-    return 'DU HAST NACH FALSCHEN SACHEN GESUCHT'
+    return "Ups, diese Seite ist nicht verfügbar."
 
 run(reloader=True, host='localhost', port=8000)
