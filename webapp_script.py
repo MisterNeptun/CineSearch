@@ -31,10 +31,13 @@ def search():
     query = request.query.decode()
     mydb = connectDB()
     mycursor = mydb.cursor(named_tuple=True)
-    print(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%'"))
-    mycursor.execute(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%'"))
+    print(f"SELECT * FROM movies WHERE name LIKE '%{query.q}%'")
+    mycursor.execute(f"SELECT * FROM movies WHERE name LIKE '%{query.q}%' LIMIT 2")
     
-    myresult = mycursor.fetchone()
+    myresult = mycursor.fetchall()
+    
+    for result in myresult:
+        print(str(result) + "\n")
     
     mydb.close()
     
