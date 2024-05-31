@@ -39,15 +39,31 @@
             
         </nav>
         
-        <div class="movie">
-        <h1 style="font-size: xx-large;text-align: center;">{{movie.name}}</h1>
-        <ul style="text-align: center;">Relase: {{movie.date}}</ul>
-        <ul style="text-align: center;">Runtime: {{movie.runtime}}</ul>
-        <ul style="text-align: center;">Budget: {{movie.budget}}</ul>
-        <ul style="text-align: center;">Revenue: {{movie.revenue}}</ul>
-        <ul style="text-align: center;">Kind: {{movie.kind}}</ul>
-        </div>
+        % for result in myresult:
         
+        <div class="movie">
+            <h1 style="font-size: xx-large;text-lign: center;">
+                {{movie.name}}
+            </h1>
+            
+            <ul style="text-align: center;">
+                Relase: {{movie.date}}
+            </ul>
+            <ul style="text-align: center;">
+                Runtime: {{movie.runtime}}
+            </ul>
+            <ul style="text-align: center;">
+                Budget: {{movie.budget}}
+            </ul>
+            <ul style="text-align: center;">
+                Revenue: {{movie.revenue}}
+            </ul>
+            <ul style="text-align: center;">
+                Kind: {{movie.kind}}
+            </ul>
+        </div>
+
+        % end
         
         
         
