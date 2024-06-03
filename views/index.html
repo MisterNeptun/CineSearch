@@ -3,9 +3,6 @@
     <head>
         <link rel="stylesheet" href="/static/styles.css">
         
-        <meta name="viewport" content="width=device-width initial-scale:1.0"/>
-        <meta charset="utf-8"/>
-        
         <!-- Google Fonts import -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,11 +11,13 @@
         <!-- Search Icon import -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
+        <meta name="viewport" content="width=device-width initial-scale:1.0"/>
+        <meta charset="utf-8"/>
         <title>Startseite</title>
-        
     </head>
     
     <body>
+        
         <!-- NAV HEADER -->
         <nav id="navbar" class="navbar">
             
@@ -40,6 +39,7 @@
         </nav>
         
         <div class="searchbar">
+            <h1 style="text-align: center;font-size: xx-large;">Search</h1>
             
             <form action="/search?q=">
                 <input type="text" placeholder="Film oder so.." name="q">
@@ -49,6 +49,25 @@
             </form>
             
         </div>
+        <hr style="margin: 5%;;">
+
+        <h1 style="text-align: center; font-size: xx-large;">Recommendation</h1>
+        <form action="/search" method="get">
+            <p style="text-align: center;">
+                <button type="button" onclick="submitForm()" style="text-align: center; font-size: x-large; font-family: Jaro, sans-serif; background-color: gray; padding: 1%; color: white;">
+                    {{vorschlag.name}}
+                </button>
+            </p>
+        </form>
+        
+        <script>
+            function submitForm() {
+                var inputValue = "{{vorschlag.name}}"; // Get the value you want to submit
+                window.location.href = "/search?q=" + encodeURIComponent(inputValue);
+            }
+        </script>
+        
+
         
         <!--
 

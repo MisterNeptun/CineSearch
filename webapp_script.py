@@ -15,46 +15,46 @@ def connectDB():
 def static(filename):
     return static_file(filename, root="static")
 
-# Wenn man den Link eingibt, kommt diese Seite
 @route('/')
 def index():
-    return template("../views/index.html", title="Startseite")
+    import random
+    zahl=random.randint(1,240108)
+    mydb = connectDB()
+    mycursor = mydb.cursor(named_tuple=True)    
+    mycursor.execute(f"SELECT * FROM movies WHERE id LIKE '%{query.q}%'")
+
+    myresult = mycursor.fetchone()
+    
+    mydb.close()
+    print(myresult)
+    
+    return template("../views/index.html", title="Startseite", vorschlag=myresult)
 
 # Routing der about page
 @route("/about")
 def about():
     return template("../views/about.html", title="About")
 
-# Ergebnis nach einer Suche
 @route("/search")
 def search():
-    query = request.query.decode()
-    mydb = connectDB()
-    mycursor = mydb.cursor(named_tuple=True)
-    # print(f"SELECT * FROM movies WHERE name LIKE '%{query.q}%'")
-    mycursor.execute(f"SELECT * FROM movies WHERE name LIKE '%{query.q}%' LIMIT 2")
-    
-    myresult = mycursor.fetchall()
-    
-    for movie in myresult:
-        print("---------")
-        for result in movie:
-            print(str(result))
-    
-    mydb.close()
-    
     try:
-        return template("search.html", movie=myresult)
+        query = request.query.decode()
+        mydb = connectDB()
+        mycursor = mydb.cursor(named_tuple=True)
+        mycursor.execute(f"SELECT * FROM movies WHERE name LIKE '%{query.q}%'")
+    
+        myresult = mycursor.fetchone()
+    
+        print(myresult)
+    
+        mydb.close()
+        
+        return template("../views/search.html", movie=myresult)
     except:
-        return template("error.html", movie=None)
-
-@route("/serie/<id>")
-def film(id):
-    return "Du hast Details zur Serie mit der id " + id + " verlangt"
-
-# Sucht man eine Subpage, die es nicht gibt, gibt das einen Fehler.
+        return template("../views/error.html", movie=None)
+    
 @error(404)
 def error404(error):
-    return "Ups, diese Seite gibt es nicht."
+    return 'DU HSOHN HAST NACH FALSCHEN SACHEN GESUCHT'
 
 run(reloader=True, host='localhost', port=8000)
