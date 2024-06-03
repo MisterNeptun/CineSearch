@@ -1,7 +1,6 @@
 from bottle import request, route, run, static_file, template, error
 from mysql.connector import connect
 
-
 # Funktion zur Erstellung von der DatenBank
 def connectDB():
     mydb = connect(
@@ -16,64 +15,46 @@ def connectDB():
 def static(filename):
     return static_file(filename, root="static")
 
-# ERKLÄRUNG?
 @route('/')
 def index():
     import random
     zahl=random.randint(1,240108)
     mydb = connectDB()
     mycursor = mydb.cursor(named_tuple=True)    
-    mycursor.execute(str("SELECT * FROM movies WHERE id LIKE '%")+ str(zahl) + str("%'"))
+    mycursor.execute(f"SELECT * FROM movies WHERE id LIKE '%{query.q}%'")
 
     myresult = mycursor.fetchone()
     
     mydb.close()
     print(myresult)
     
-    return template("../views/index.html", vorschlag=myresult)
+    return template("../views/index.html", title="Startseite", vorschlag=myresult)
 
 # Routing der about page
 @route("/about")
 def about():
-   
-    return template("about.html", title="About")
-
-@route('/movie')
-def movie():
-
-    mydb = connectDB()
-    mycursor = mydb.cursor(named_tuple=True)    
-    mycursor.execute("SELECT * FROM movies WHERE name LIKE '%Titanic%'")
-
-    myresult = mycursor.fetchone()
-    
-    mydb.close()
-    
-    print(myresult)
-    return template("movie.html", movie=myresult)
+    return template("../views/about.html", title="About")
 
 @route("/search")
 def search():
-    
-    
     try:
         query = request.query.decode()
         mydb = connectDB()
         mycursor = mydb.cursor(named_tuple=True)
-        print(str("SELECT * FROM movies WHERE name LIKE '%")+query.q+str("%'"))
-        mycursor.execute(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%'"))
-        
+        mycursor.execute(f"SELECT * FROM movies WHERE name LIKE '%{query.q}%'")
+    
         myresult = mycursor.fetchone()
+    
         print(myresult)
-        
+    
         mydb.close()
-        return template("movie.html", movie=myresult)
+        
+        return template("../views/search.html", movie=myresult)
     except:
-        return template("fehler.html")
+        return template("../views/error.html", movie=None)
     
 @error(404)
 def error404(error):
     return 'DU HSOHN HAST NACH FALSCHEN SACHEN GESUCHT'
 
 run(reloader=True, host='localhost', port=8000)
-
