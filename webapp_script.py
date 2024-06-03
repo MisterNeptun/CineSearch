@@ -31,20 +31,22 @@ def search():
     query = request.query.decode()
     mydb = connectDB()
     mycursor = mydb.cursor(named_tuple=True)
-    print(f"SELECT * FROM movies WHERE name LIKE '%{query.q}%'")
+    # print(f"SELECT * FROM movies WHERE name LIKE '%{query.q}%'")
     mycursor.execute(f"SELECT * FROM movies WHERE name LIKE '%{query.q}%' LIMIT 2")
     
     myresult = mycursor.fetchall()
     
-    for result in myresult:
-        print(str(result) + "\n")
+    for movie in myresult:
+        print("---------")
+        for result in movie:
+            print(str(result))
     
     mydb.close()
     
     try:
-        return template("movie.html", movie=myresult)
+        return template("search.html", movie=myresult)
     except:
-        return error404("404")
+        return template("error.html", movie=None)
 
 @route("/serie/<id>")
 def film(id):
@@ -53,6 +55,6 @@ def film(id):
 # Sucht man eine Subpage, die es nicht gibt, gibt das einen Fehler.
 @error(404)
 def error404(error):
-    return "Ups, das hat nicht geklappt. " + error
+    return "Ups, diese Seite gibt es nicht."
 
 run(reloader=True, host='localhost', port=8000)
