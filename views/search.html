@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="/static/styles.css">
+        
+        <meta name="viewport" content="width=device-width initial-scale:1.0"/>
+        <meta charset="utf-8"/>
+        
+        <!-- Google Fonts import -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+        
+        <!-- Search Icon import -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <title>{{movie.name}}</title>
+        
+    </head>
+    
+    <body>
+        <!-- NAV HEADER -->
+        <nav id="navbar" class="navbar">
+            
+            <button onclick="window.history.back()" class="link link-back">
+                <i class="fa fa-angle-left"></i>
+            </button>
+    
+            <div class="nav-logo">
+                <p>
+                    <a href="./">CineSearch</a>
+                </p>
+            </div>
+            <div class="nav-about">
+                <p>
+                    <a href="./about">About</a>
+                </p>
+            </div>
+            
+        </nav>
+        
+        % for movie in myresult:
+        
+            <div class="movie">
+                <h1 style="font-size: xx-large;text-lign: center;">
+                    {{movie.name}}
+                </h1>
+
+                <ul style="text-align: center;">
+                    Relase: {{movie.date}}
+                </ul>
+                <ul style="text-align: center;">
+                    Runtime: {{movie.runtime}}
+                </ul>
+                <ul style="text-align: center;">
+                    Budget: {{movie.budget}}
+                </ul>
+                <ul style="text-align: center;">
+                    Revenue: {{movie.revenue}}
+                </ul>
+                <ul style="text-align: center;">
+                    Kind: {{movie.kind}}
+                </ul>
+            </div>
+
+        % end
+        
+        
+        
+
+    </body>
+</html>
