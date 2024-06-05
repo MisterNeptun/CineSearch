@@ -35,7 +35,6 @@ def about():
     return template("../views/about.html", title="About")
 
 @route("/search")
-@route("/search")
 def search():
     
     
