@@ -51,7 +51,7 @@ def search():
         mydb.close()
         return template("movie.html", movie=myresult)
     except:
-        return template("fehler.html")
+        return template("error.html")
 @error(404)
 def error404(error):
     return 'DU HSOHN HAST NACH FALSCHEN SACHEN GESUCHT'
