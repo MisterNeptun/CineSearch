@@ -35,23 +35,24 @@ def about():
     return template("../views/about.html", title="About")
 
 @route("/search")
+@route("/search")
 def search():
+    
+    
     try:
         query = request.query.decode()
         mydb = connectDB()
         mycursor = mydb.cursor(named_tuple=True)
-        mycursor.execute(f"SELECT * FROM movies WHERE name LIKE '%{query.q}%'")
-    
-        myresult = mycursor.fetchone()
-    
-        print(myresult)
-    
-        mydb.close()
+        print(str("SELECT * FROM movies WHERE name LIKE '%")+query.q+str("%'"))
+        mycursor.execute(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%' OR id LIKE '%")+query.q+ str("%'"))
         
-        return template("../views/search.html", movie=myresult)
+        myresult = mycursor.fetchone()
+        print(myresult)
+        
+        mydb.close()
+        return template("movie.html", movie=myresult)
     except:
-        return template("../views/error.html", movie=None)
-    
+        return template("fehler.html")
 @error(404)
 def error404(error):
     return 'DU HSOHN HAST NACH FALSCHEN SACHEN GESUCHT'
