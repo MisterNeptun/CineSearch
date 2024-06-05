@@ -3,6 +3,8 @@
     <head>
         <link rel="stylesheet" href="/static/styles.css">
         
+        <meta name="viewport" content="width=device-width initial-scale:1.0"/>
+        <meta charset="utf-8"/>
         
         <!-- Google Fonts import -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,13 +13,13 @@
         
         <!-- Search Icon import -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <meta name="viewport" content="width=device-width initial-scale:1.0"/>
-        <meta charset="utf-8"/>
         
-       
+        <title>{{movie.name}}</title>
         
     </head>
+    
     <body>
+        <!-- NAV HEADER -->
         <nav id="navbar" class="navbar">
             
             <button onclick="window.history.back()" class="link link-back">
@@ -37,21 +39,31 @@
             
         </nav>
         
-            
-            
+        % for movie in myresult:
         
-        <ul>
-            % for row in movie:
-                <h1 style="font-size: xx-large;text-align: center;">{{row.name}}</h1>
-                <ul style="text-align: center;">Relase: YY,MM,DD {{row.date}}</ul>
-                <ul style="text-align: center;">Runtime: {{row.runtime}} Minutes</ul>
-                <ul style="text-align: center;">Budget: {{row.budget}} $</ul>
-                <ul style="text-align: center;">Revenue: {{row.revenue}} $</ul>
-                <ul style="text-align: center;">Kind: {{row.kind}}</ul>
-                <hr style="margin: 5%;">
+            <div class="movie">
+                <h1 style="font-size: xx-large;text-lign: center;">
+                    {{movie.name}}
+                </h1>
 
-            % end
-        </ul>
+                <ul style="text-align: center;">
+                    Relase: {{movie.date}}
+                </ul>
+                <ul style="text-align: center;">
+                    Runtime: {{movie.runtime}}
+                </ul>
+                <ul style="text-align: center;">
+                    Budget: {{movie.budget}}
+                </ul>
+                <ul style="text-align: center;">
+                    Revenue: {{movie.revenue}}
+                </ul>
+                <ul style="text-align: center;">
+                    Kind: {{movie.kind}}
+                </ul>
+            </div>
+
+        % end
         <foo id="footer" class="footer">
             <div class="foo-text">
                 <p> 
@@ -60,11 +72,6 @@
                    
             </div>
         </foo>
-
-
-        
-        
-        
         
         
 

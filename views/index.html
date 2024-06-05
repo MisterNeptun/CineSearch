@@ -3,8 +3,6 @@
     <head>
         <link rel="stylesheet" href="/static/styles.css">
         
-        <meta name="viewport" content="width=device-width initial-scale:1.0"/>
-        <meta charset="utf-8"/>
         
         <!-- Google Fonts import -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,33 +11,35 @@
         
         <!-- Search Icon import -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width initial-scale:1.0"/>
+        <meta charset="utf-8"/>
         
-        <title>Startseite</title>
+       
         
     </head>
-    
     <body>
-        <!-- NAV HEADER -->
         <nav id="navbar" class="navbar">
             
-            <button onclick="window.history.back()" class="link link-back">
-                <i class="fa fa-angle-left"></i>
-            </button>
+            
     
             <div class="nav-logo">
                 <p>
-                    <a herf="./">CineSearch</a>
+                    <a href="./">CineSearch</a>
                 </p>
             </div>
             <div class="nav-about">
                 <p>
-                    <a  href="./about">About</a>
+                    <a href="./about">About</a>
                 </p>
             </div>
-            
+            <div class="nav-404">
+                <p>
+                    <a  href="./404">Visit 404 Page</a>
+                </p>
+            </div>
         </nav>
-        
         <div class="searchbar">
+            <h1 style="text-align: center;font-size: xx-large;">Search</h1>
             
             <form action="/search?q=">
                 <input type="text" placeholder="Film oder so.." name="q">
@@ -49,29 +49,39 @@
             </form>
             
         </div>
-        
-        <!--
+        <hr style="margin: 5%;;">
 
-        <h1 class="header-recommendations header">Our Recommendations:</h1>
+        <h1 style="text-align: center; font-size: xx-large;">Recommendation</h1>
+        <form action="/search" method="get">
+            <p style="text-align: center;">
+                <button type="button" onclick="submitForm()" style="text-align: center; font-size: x-large; font-family: Jaro, sans-serif; background-color: gray; padding: 1%; color: white;">
+                    {{vorschlag.name}}
+                </button>
+            </p>
+        </form>
         
-        <div class="recommendations">
-            
-            <a class="movie-tile" href="" target="_blank">
-                <img class="movie-image" alt="" src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"/>
-                <p class="movie-tile-subtitle">Movie name</p>
-            </a>
-            
-            <a class="movie-tile" href="" target="_blank">
-                <img class="movie-image" alt="" src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"/>
-                <p class="movie-tile-subtitle">Movie name</p>
-            </a>
-            
-            <a class="movie-tile" href="" target="_blank">
-                <img class="movie-image" alt="" src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"/>
-                <p class="movie-tile-subtitle">Movie name</p>
-            </a>
-        </div>
-        -->
+        <script>
+            function submitForm() {
+                var inputValue = "{{vorschlag.id}}"; // Get the value you want to submit
+                window.location.href = "/search?q=" + encodeURIComponent(inputValue);
+            }
+        </script>
+        <foo id="footer" class="footer">
+            <div class="foo-text">
+                <p> 
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">| Copyright: 2024 - 2024 CineSearch inc. | Privacy: We dont Care  |</a>
+                </p>
+                   
+            </div>
+        </foo>
         
+            
+            
+        
+        
+        
+        
+        
+
     </body>
 </html>
