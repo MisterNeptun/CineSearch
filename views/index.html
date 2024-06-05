@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="/static/styles.css">
         
+        
         <!-- Google Fonts import -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,85 +11,51 @@
         
         <!-- Search Icon import -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
         <meta name="viewport" content="width=device-width initial-scale:1.0"/>
         <meta charset="utf-8"/>
-        <title>Startseite</title>
-    </head>
-    
-    <body>
         
-        <!-- NAV HEADER -->
+        <title>Result</title>
+        
+    </head>
+    <body>
         <nav id="navbar" class="navbar">
             
-    
+            <button onclick="window.history.back()" class="link link-back">
+                <i class="fa fa-angle-left"></i>
+            </button>
     
             <div class="nav-logo">
                 <p>
-                    <a herf="./">CineSearch</a>
+                    <a href="./">CineSearch</a>
                 </p>
             </div>
             <div class="nav-about">
                 <p>
-                    <a  href="./about">About</a>
+                    <a href="./about">About</a>
                 </p>
             </div>
             
         </nav>
         
-        <div class="searchbar">
-            <h1 style="text-align: center;font-size: xx-large;">Search</h1>
             
-            <form action="/search?q=">
-                <input type="text" placeholder="Film oder so.." name="q">
-                <button type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
             
-        </div>
-        <hr style="margin: 5%;;">
+        <ul>
+            % for row in movie:
+                <h1 style="font-size: xx-large;text-align: center;">{{row.name}}</h1>
+                <ul style="text-align: center;">Relase: {{row.date}}</ul>
+                <ul style="text-align: center;">Runtime: {{row.runtime}}</ul>
+                <ul style="text-align: center;">Budget: {{row.budget}}</ul>
+                <ul style="text-align: center;">Revenue: {{row.revenue}}</ul>
+                <ul style="text-align: center;">Kind: {{row.kind}}</ul>
+                <hr style="margin: 5%;">
 
-        <h1 style="text-align: center; font-size: xx-large;">Recommendation</h1>
-        <form action="/search" method="get">
-            <p style="text-align: center;">
-                <button type="button" onclick="submitForm()" style="text-align: center; font-size: x-large; font-family: Jaro, sans-serif; background-color: gray; padding: 1%; color: white;">
-                    {{vorschlag.name}}
-                </button>
-            </p>
-        </form>
+            % end
+        </ul>
         
-        <script>
-            function submitForm() {
-                var inputValue = "{{vorschlag.id}}"; // Get the value you want to submit
-                window.location.href = "/search?q=" + encodeURIComponent(inputValue);
-            }
-        </script>
+        
+        
+        
         
 
-        
-        <!--
-
-        <h1 class="header-recommendations header">Our Recommendations:</h1>
-        
-        <div class="recommendations">
-            
-            <a class="movie-tile" href="" target="_blank">
-                <img class="movie-image" alt="" src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"/>
-                <p class="movie-tile-subtitle">Movie name</p>
-            </a>
-            
-            <a class="movie-tile" href="" target="_blank">
-                <img class="movie-image" alt="" src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"/>
-                <p class="movie-tile-subtitle">Movie name</p>
-            </a>
-            
-            <a class="movie-tile" href="" target="_blank">
-                <img class="movie-image" alt="" src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"/>
-                <p class="movie-tile-subtitle">Movie name</p>
-            </a>
-        </div>
-        -->
-        
     </body>
 </html>
