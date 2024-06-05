@@ -55,14 +55,14 @@
         <form action="/search" method="get">
             <p style="text-align: center;">
                 <button type="button" onclick="submitForm()" style="text-align: center; font-size: x-large; font-family: Jaro, sans-serif; background-color: gray; padding: 1%; color: white;">
-                    {{vorschlag.id}}
+                    {{vorschlag.name}}
                 </button>
             </p>
         </form>
         
         <script>
             function submitForm() {
-                var inputValue = "{{vorschlag.name}}"; // Get the value you want to submit
+                var inputValue = "{{vorschlag.id}}"; // Get the value you want to submit
                 window.location.href = "/search?q=" + encodeURIComponent(inputValue);
             }
         </script>
