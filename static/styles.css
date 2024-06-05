@@ -18,7 +18,18 @@ ul {
     font-size: x-large;
     text-align: center;
 }
+.nav-404 {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2vw;
+}
 
+.nav-404 a {
+    text-decoration: none;
+    color: white;
+}
 .navbar {
     position: relative;
     
@@ -50,7 +61,7 @@ ul {
     transform: translate(-50%,-50%);
     
     width: auto;
-    font-size: 3vw;
+    font-size: 4vw;
     
     margin: auto;
     padding: 1vw 0 1vw 0;
@@ -65,7 +76,7 @@ ul {
     right: 30px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 .nav-about a {
@@ -115,3 +126,4 @@ ul {
     max-width: 100%;
     grid-gap: 10px;
 }
+
