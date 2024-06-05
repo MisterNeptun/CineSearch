@@ -54,7 +54,7 @@ def search():
         return template("error.html")
 @error(404)
 def error404(error):
-    return 'DU HSOHN HAST NACH FALSCHEN SACHEN GESUCHT'
+    return template("../views/404.html", title="404 Error")
 
 run(reloader=True, host='localhost', port=8000)
 
