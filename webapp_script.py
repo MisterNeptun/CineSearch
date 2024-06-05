@@ -52,6 +52,8 @@ def search():
         mydb.close()
         for i in myresult:
             print(i)
+        if len(myresult)<10:
+            return template("error.html")
         return template("movie.html", movie=myresult)
     except:
         return template("error.html")
