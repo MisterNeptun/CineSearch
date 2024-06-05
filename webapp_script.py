@@ -21,7 +21,7 @@ def index():
     zahl=random.randint(1,240108)
     mydb = connectDB()
     mycursor = mydb.cursor(named_tuple=True)    
-    mycursor.execute(f"SELECT * FROM movies WHERE id LIKE '%{query.q}%'")
+   mycursor.execute(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%' OR id LIKE '%")+query.q+ str("%'"))
 
     myresult = mycursor.fetchone()
     
