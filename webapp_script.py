@@ -35,6 +35,7 @@ def about():
     return template("../views/about.html", title="About")
 
 @route("/search")
+@route("/search")
 def search():
     
     
@@ -43,12 +44,14 @@ def search():
         mydb = connectDB()
         mycursor = mydb.cursor(named_tuple=True)
         print(str("SELECT * FROM movies WHERE name LIKE '%")+query.q+str("%'"))
-        mycursor.execute(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%' OR id LIKE '%")+query.q+ str("%'"))
+        mycursor.execute(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%' OR id LIKE '%")+query.q+ str("%' LIMIT 25"))
         
-        myresult = mycursor.fetchone()
-        print(myresult)
+        myresult = mycursor.fetchall()
+        
         
         mydb.close()
+        for i in myresult:
+            print(i)
         return template("movie.html", movie=myresult)
     except:
         return template("error.html")
