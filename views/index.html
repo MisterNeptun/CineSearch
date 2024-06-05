@@ -40,6 +40,35 @@
                 </p>
             </div>
         </nav>
+        <div class="searchbar">
+            <h1 style="text-align: center;font-size: xx-large;">Search</h1>
+            
+            <form action="/search?q=">
+                <input type="text" placeholder="Film oder so.." name="q">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+            
+        </div>
+        <hr style="margin: 5%;;">
+
+        <h1 style="text-align: center; font-size: xx-large;">Recommendation</h1>
+        <form action="/search" method="get">
+            <p style="text-align: center;">
+                <button type="button" onclick="submitForm()" style="text-align: center; font-size: x-large; font-family: Jaro, sans-serif; background-color: gray; padding: 1%; color: white;">
+                    {{vorschlag.name}}
+                </button>
+            </p>
+        </form>
+        
+        <script>
+            function submitForm() {
+                var inputValue = "{{vorschlag.id}}"; // Get the value you want to submit
+                window.location.href = "/search?q=" + encodeURIComponent(inputValue);
+            }
+        </script>
+        
         
             
             
