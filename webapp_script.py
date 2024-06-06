@@ -57,6 +57,24 @@ def search():
         return template("movie.html", movie=myresult)
     except:
         return template("error.html")
+@route("/movie")
+def movie():
+    
+   
+    try:
+        query = request.query.decode()
+        mydb = connectDB()
+        mycursor = mydb.cursor(named_tuple=True)
+        mycursor.execute(str("SELECT * FROM movies WHERE id LIKE '%")+query.q+ str("%'"))
+        
+        myresult = mycursor.fetchone()
+        
+        
+        mydb.close()
+        
+        return template("result.html", movie=myresult)
+    except:
+        return template("error.html")
 @error(404)
 def error404(error):
     return template("../views/404.html", title="404 Error")
