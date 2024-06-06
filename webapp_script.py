@@ -78,6 +78,7 @@ def movie():
         mycursor2.execute(str("SELECT * FROM abstracts WHERE movie_id LIKE '%")+query.q+ str("%'"))
         
         myresult2 = mycursor2.fetchone()
+        mydb.close()
         
         
        
