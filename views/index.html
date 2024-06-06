@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="/static/styles.css?v=1.0">
+        
+        
+        <!-- Google Fonts import -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+        
+        <!-- Search Icon import -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width initial-scale:1.0"/>
+        <meta charset="utf-8"/>
+        
+       
+        
+    </head>
+    <body>
+        <nav id="navbar" class="navbar">
+            
+            
+    
+            <div class="nav-logo">
+                <p>
+                    <a href="./">CineSearch</a>
+                </p>
+            </div>
+            <div class="nav-about">
+                <p>
+                    <a href="./about">About</a>
+                </p>
+            </div>
+            <div class="nav-404">
+                <p>
+                    <a  href="./404">Visit 404 Page</a>
+                </p>
+            </div>
+        </nav>
+        <div class="searchbar">
+            <h1 style="text-align: center;font-size: xx-large;">Search</h1>
+            
+            <form action="/search?q=">
+                <input type="text" placeholder="Film oder so.." name="q">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+            
+        </div>
+        <hr style="margin: 5%;;">
+
+        <h1 style="text-align: center; font-size: xx-large;">Recommendation</h1>
+        <form action="/search" method="get">
+            <p style="text-align: center;">
+                <button type="button" onclick="submitForm()" style="text-align: center; font-size: x-large; font-family: Jaro, sans-serif; background-color: gray; padding: 1%; color: white;">
+                    {{vorschlag.name}}
+                </button>
+            </p>
+        </form>
+        
+        <script>
+            function submitForm() {
+                var inputValue = "{{vorschlag.id}}"; // Get the value you want to submit
+                window.location.href = "/search?q=" + encodeURIComponent(inputValue);
+            }
+        </script>
+        <foo id="footer" class="footer">
+            <div class="foo-text">
+                <p> 
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">| Copyright: 2024 - 2024 CineSearch inc. | Privacy: We dont Care  |</a>
+                </p>
+                   
+            </div>
+        </foo>
+        
+            
+            
+        
+        
+        
+        
+        
+
+    </body>
+</html>

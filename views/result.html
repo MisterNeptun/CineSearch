@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="/static/styles.css?v=1.0">
+        
+        
+        <!-- Google Fonts import -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+        
+        <!-- Search Icon import -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width initial-scale:1.0"/>
+        <meta charset="utf-8"/>
+        
+       
+        
+    </head>
+    <body>
+        <nav id="navbar" class="navbar">
+            
+            <button onclick="window.history.back()" class="link link-back">
+                <i class="fa fa-angle-left"></i>
+            </button>
+    
+            <div class="nav-logo">
+                <p>
+                    <a href="./">CineSearch</a>
+                </p>
+            </div>
+            <div class="nav-about">
+                <p>
+                    <a href="./about">About</a>
+                </p>
+            </div>
+            
+        </nav>
+        
+            
+            
+        
+        <ul >
+            
+                
+                <h1 style="font-size: xx-large;text-align: center;">{{movie.name}}</h1>
+                <ul style="text-align: center;">Relase: YY,MM,DD {{movie.date}}</ul>
+                <ul style="text-align: center;">Runtime: {{movie.runtime}} Minutes</ul>
+                <ul style="text-align: center;">Budget: {{movie.budget}} $</ul>
+                <ul style="text-align: center;">Revenue: {{movie.revenue}} $</ul>
+                <ul style="text-align: center;">Kind: {{movie.kind}}</ul>
+                <hr style="margin: 5%;">
+                <h2>Describtion</h2>
+                <p>{{abstracts.text}}</p>
+                <hr style="margin: 5%;">
+        </ul>
+        <foo id="footer" class="footer">
+            <div class="foo-text">
+                <p> 
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">| Copyright: 2024 - 2024 CineSearch inc. | Privacy: We dont Care  |</a>
+                </p>
+                   
+            </div>
+        </foo>
+
+
+        
+        
+        
+        
+        
+
+    </body>
+</html>
