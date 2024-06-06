@@ -72,7 +72,17 @@ def movie():
         
         mydb.close()
         
-        return template("result.html", movie=myresult)
+        mydb.close()
+        mydb = connectDB()
+        mycursor2 = mydb.cursor(named_tuple=True)
+        mycursor2.execute(str("SELECT * FROM abstracts WHERE movie_id LIKE '%")+query.q+ str("%'"))
+        
+        myresult2 = mycursor2.fetchone()
+        
+        
+       
+        
+        return template("result.html", movie=myresult,abstracts=myresult2)
     except:
         return template("error.html")
 @error(404)
