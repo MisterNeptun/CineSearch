@@ -52,7 +52,7 @@ def search():
         mydb.close()
         for i in myresult:
             print(i)
-        if len(myresult)<10:
+        if len(myresult)<1:
             return template("error.html")
         return template("movie.html", movie=myresult)
     except:
