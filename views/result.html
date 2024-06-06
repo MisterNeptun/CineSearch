@@ -1,74 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="/static/styles.css?v=1.0">
+from bottle import request, route, run, static_file, template, error
+from mysql.connector import connect
+
+# Funktion zur Erstellung von der DatenBank
+def connectDB():
+    mydb = connect(
+      host="web3.kinet.ch",    
+      user="omdb_user",
+      database="omdb",
+      password="QhPSNctsBRgsYOKEbASI"
+    )
+    return mydb
+
+@route('/static/<filename>')
+def static(filename):
+    return static_file(filename, root="static")
+
+@route('/')
+def index():
+    import random
+    zahl=random.randint(1,240108)
+    mydb = connectDB()
+    mycursor = mydb.cursor(named_tuple=True)    
+    mycursor.execute(str("SELECT * FROM movies WHERE id LIKE '%")+ str(zahl) + str("%'"))
+
+    myresult = mycursor.fetchone()
+    
+    mydb.close()
+    print(myresult)
+    
+    return template("../views/index.html", vorschlag=myresult)
+# Routing der about page
+@route("/about")
+def about():
+    return template("../views/about.html", title="About")
+
+
+@route("/search")
+def search():
+    
+    
+    try:
+        query = request.query.decode()
+        mydb = connectDB()
+        mycursor = mydb.cursor(named_tuple=True)
+        print(str("SELECT * FROM movies WHERE name LIKE '%")+query.q+str("%'"))
+        mycursor.execute(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%' OR id LIKE '%")+query.q+ str("%' LIMIT 25"))
+        
+        myresult = mycursor.fetchall()
         
         
-        <!-- Google Fonts import -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+        mydb.close()
+        for i in myresult:
+            print(i)
+        if len(myresult)<1:
+            return template("error.html")
+        return template("movie.html", movie=myresult)
+    except:
+        return template("error.html")
+@route("/movie")
+def movie():
+    
+   
+    try:
+        query = request.query.decode()
+        mydb = connectDB()
+        mycursor = mydb.cursor(named_tuple=True)
+        mycursor.execute(str("SELECT * FROM movies WHERE id LIKE '%")+query.q+ str("%'"))
         
-        <!-- Search Icon import -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <meta name="viewport" content="width=device-width initial-scale:1.0"/>
-        <meta charset="utf-8"/>
+        myresult = mycursor.fetchone()
+        
+        
+        mydb.close()
+        mydb = connectDB()
+        mycursor2 = mydb.cursor(named_tuple=True)
+        mycursor2.execute(str("SELECT * FROM abstracts WHERE movie_id LIKE '%")+query.q+ str("%'"))
+        
+        myresult2 = mycursor2.fetchone()
+        
         
        
         
-    </head>
-    <body>
-        <nav id="navbar" class="navbar">
-            
-            <button onclick="window.history.back()" class="link link-back">
-                <i class="fa fa-angle-left"></i>
-            </button>
-    
-            <div class="nav-logo">
-                <p>
-                    <a href="./">CineSearch</a>
-                </p>
-            </div>
-            <div class="nav-about">
-                <p>
-                    <a href="./about">About</a>
-                </p>
-            </div>
-            
-        </nav>
-        
-            
-            
-        
-        <ul >
-            
-                
-                <h1 style="font-size: xx-large;text-align: center;">{{movie.name}}</h1>
-                <ul style="text-align: center;">Relase: YY,MM,DD {{movie.date}}</ul>
-                <ul style="text-align: center;">Runtime: {{movie.runtime}} Minutes</ul>
-                <ul style="text-align: center;">Budget: {{movie.budget}} $</ul>
-                <ul style="text-align: center;">Revenue: {{movie.revenue}} $</ul>
-                <ul style="text-align: center;">Kind: {{movie.kind}}</ul>
-                <hr style="margin: 5%;">
-                <h2>Describtion</h2>
-                <p>{{abstracts.text}}</p>
-                <hr style="margin: 5%;">
-        </ul>
-        <foo id="footer" class="footer">
-            <div class="foo-text">
-                <p> 
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">| Copyright: 2024 - 2024 CineSearch inc. | Privacy: We dont Care  |</a>
-                </p>
-                   
-            </div>
-        </foo>
+        return template("result.html", movie=myresult,abstracts=myresult2)
+    except:
+        return template("error.html")
+@error(404)
+def error404(error):
+    return template("../views/404.html", title="404 Error")
+
+run(reloader=True, host='localhost', port=8000)
 
 
-        
-        
-        
-        
-        
-
-    </body>
-</html>
