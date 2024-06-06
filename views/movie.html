@@ -42,16 +42,26 @@
         
         <ul>
             % for row in movie:
-                <h1 style="font-size: xx-large;text-align: center;">{{row.name}}</h1>
-                <ul style="text-align: center;">Relase: YY,MM,DD {{row.date}}</ul>
-                <ul style="text-align: center;">Runtime: {{row.runtime}} Minutes</ul>
-                <ul style="text-align: center;">Budget: {{row.budget}} $</ul>
-                <ul style="text-align: center;">Revenue: {{row.revenue}} $</ul>
-                <ul style="text-align: center;">Kind: {{row.kind}}</ul>
-                <hr style="margin: 5%;">
-
+                <form action="/movie" method="get">
+                    <div type="button" onclick="submitForm('{{ row.id }}')">
+                        <h1 style="font-size: xx-large; text-align: center;">{{ row.name }}</h1>
+                        <ul style="text-align: center;">Release: YY,MM,DD {{ row.date }}</ul>
+                        <ul style="text-align: center;">Runtime: {{ row.runtime }} Minutes</ul>
+                        <ul style="text-align: center;">Budget: {{ row.budget }} $</ul>
+                        <ul style="text-align: center;">Revenue: {{ row.revenue }} $</ul>
+                        <ul style="text-align: center;">Kind: {{ row.kind }}</ul>
+                        <hr style="margin: 5%;">
+                    </div>
+                </form>
             % end
-        </ul>
+            
+            <script>
+                function submitForm(movieId) {
+                    // Get the value you want to submit
+                    window.location.href = "/movie?q=" + encodeURIComponent(movieId);
+                }
+            </script>
+            </ul>
         <foo id="footer" class="footer">
             <div class="foo-text">
                 <p> 
