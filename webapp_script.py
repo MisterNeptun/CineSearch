@@ -74,7 +74,7 @@ def search():
 
         print(str("SELECT * FROM movies WHERE name LIKE '%")+query.q+str("%'"))
 
-        mycursor.execute(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%' OR id LIKE '%")+query.q+ str("%' LIMIT 25"))
+        mycursor.execute(str("SELECT * FROM movies WHERE name LIKE '%")+ query.q + str("%' OR id LIKE '%")+query.q+ str("%' LIMIT 1000"))
 
         myresult = mycursor.fetchall()
 
