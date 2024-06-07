@@ -119,7 +119,7 @@ def movie():
 
         mycursor2 = mydb.cursor(named_tuple=True)
 
-        mycursor2.execute(str("SELECT * FROM abstracts WHERE movie_id LIKE '%")+query.q+ str("%'"))
+        mycursor2.execute(str("SELECT * FROM abstracts WHERE movie_id = '")+query.q+ str("'"))
 
         myresult2 = mycursor2.fetchone()
 
@@ -127,7 +127,7 @@ def movie():
 
         if myresult2 is None:
 
-            print(myresult2)
+            
 
             from collections import namedtuple
 
@@ -135,11 +135,31 @@ def movie():
 
             myresult2 = Row(text="No Description")
 
-            print(myresult2)
+
+            
+         
+        mydb = connectDB()
+
+        mycursor3 = mydb.cursor(named_tuple=True)
+
+        mycursor3.execute(str("SELECT * FROM trailers WHERE movie_id = '")+query.q+ str("'"))
+
+        myresult3 = mycursor3.fetchone()
+
+        mydb.close()
+        if myresult3 is None:
+            from collections import namedtuple
+
+            Row = namedtuple("Row", "key")
+
+            myresult3 = Row(key="dQw4w9WgXcQn")
+       
+       
 
 
 
-        return template("result.html", movie=myresult,abstracts=myresult2)
+
+        return template("result.html", movie=myresult,abstracts=myresult2,key=myresult3)
 
     except:
 
