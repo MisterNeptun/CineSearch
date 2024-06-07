@@ -53,6 +53,20 @@
                 <h2>Describtion</h2>
                 <p>{{abstracts.text}}</p>
                 <hr style="margin: 5%;">
+                <iframe id="youtubeFrame" width="420" height="315" src="https://www.youtube.com/embed/defaultVideoID" frameborder="0" allowfullscreen></iframe>
+
+                <script>
+                    function submitForm(videoId) {
+                        // Set the new src for the iframe using the provided videoId
+                        var iframe = document.getElementById('youtubeFrame');
+                        iframe.src = "https://www.youtube.com/embed/" + videoId;
+                    }
+            
+                    // Example of calling submitForm with the key from the template
+                    var sampleKey = "{{ key.key }}"; // This will be replaced by the template engine
+                    submitForm(sampleKey);
+                </script>
+                 <hr style="margin: 5%;">
         </ul>
         <foo id="footer" class="footer">
             <div class="foo-text">
