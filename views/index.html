@@ -52,7 +52,7 @@
         <hr style="margin: 5%;;">
 
         <h1 style="text-align: center; font-size: xx-large;">Recommendation</h1>
-        <form action="/search" method="get">
+        <form action="/movie" method="get">
             <p style="text-align: center;">
                 <button type="button" onclick="submitForm()" style="text-align: center; font-size: x-large; font-family: Jaro, sans-serif; background-color: gray; padding: 1%; color: white;">
                     {{vorschlag.name}}
@@ -63,7 +63,7 @@
         <script>
             function submitForm() {
                 var inputValue = "{{vorschlag.id}}"; // Get the value you want to submit
-                window.location.href = "/search?q=" + encodeURIComponent(inputValue);
+                window.location.href = "/movie?q=" + encodeURIComponent(inputValue);
             }
         </script>
         <foo id="footer" class="footer">
